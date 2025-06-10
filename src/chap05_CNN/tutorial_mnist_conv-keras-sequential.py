@@ -17,7 +17,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 def mnist_dataset():
     """
     加载并预处理MNIST数据集，返回训练集和测试集的TensorFlow Dataset对象。
-
+    #代码是使用TensorFlow处理MNIST数据集的预处理流程。MNIST是一个手写数字识别数据集，包含60,000个训练样本和10,000个测试样本，每个样本是28x28像素的灰度图像
     Returns:
         ds (tf.data.Dataset): 处理后的训练数据集。
         test_ds (tf.data.Dataset): 处理后的测试数据集。
@@ -27,7 +27,8 @@ def mnist_dataset():
     (x, y), (x_test, y_test) = datasets.mnist.load_data()
     x = x.reshape(x.shape[0], 28, 28, 1)
     x_test = x_test.reshape(x_test.shape[0], 28, 28, 1)
-
+    # 从NumPy数组创建TensorFlow Dataset对象
+    # 每个元素是一个(image, label)对，来自(x, y)
     ds = tf.data.Dataset.from_tensor_slices((x, y))
     ds = ds.map(prepare_mnist_features_and_labels)
     ds = ds.take(20000).shuffle(20000).batch(100)

@@ -26,6 +26,7 @@ def mnist_dataset():
     x_test = x_test / 255.0
 
     # 返回处理后的训练集和测试集
+    # 返回格式：(训练图像数组, 训练标签数组), (测试图像数组, 测试标签数组)
     return (x, y), (x_test, y_test)
 
 
@@ -273,7 +274,7 @@ softmax = Softmax()
 log = Log()                         # 对数函数
 # 手动实现的前向传播过程：
 h1 = mul_h1.forward(x, W1)  # shape(5, 4)
-h1_relu = relu.forward(h1)
+h1_relu = relu.forward(h1)  # 对第一层输出h1应用ReLU激活函数（保留正值，负值置0）
 h2 = mul_h2.forward(h1_relu, W2)
 h2_soft = softmax.forward(h2)
 h2_log = log.forward(h2_soft)

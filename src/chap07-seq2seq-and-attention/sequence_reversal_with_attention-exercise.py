@@ -8,16 +8,16 @@
 # In[19]:
 
 
-import numpy as np
-import tensorflow as tf
-import collections
-from tensorflow import keras
-from tensorflow.keras import layers, optimizers, datasets
-import os
-import sys
-import tqdm
-import random
-import string
+import numpy as np  # 数值计算库，提供高效的数组操作和数学函数
+import tensorflow as tf  # 深度学习框架，用于构建和训练机器学习模型
+import collections  # 提供有用的数据结构，如deque、Counter等
+from tensorflow import keras  # TensorFlow的高级API，简化模型构建过程
+from tensorflow.keras import layers, optimizers, datasets  # 从Keras导入层、优化器和预置数据集
+import os  # 操作系统接口，提供与操作系统交互的功能
+import sys  # 系统相关参数和函数，如命令行参数
+import tqdm  # 进度条工具，用于在循环中显示进度
+import random  # 生成伪随机数，用于随机采样等操作
+import string  # 字符串常量，提供常见的字符串操作
 
 
 # ## 玩具序列数据生成

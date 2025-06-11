@@ -19,7 +19,7 @@ print("(1) 输出 a 的类型（type）\n", type(a))
 print("(2) 输出 a 的各维度的大小（shape）\n", a.shape)
 print("(3) 输出 a 的第一个元素（element）\n", a[0])
 # 使用 array() 函数创建数组，函数可基于序列型的对象。创建了一个一维数组 a，并输出其类型（numpy.ndarray）、形状（(3,)） 和第一个元素（4）。
-
+# 使用 type() 获取数组的类型(numpy.ndarray),使用 shape 属性查看数组维度信息(一维数组的形状表示为 (n,)),通过索引访问数组元素（索引从 0 开始）
 # 3. 建立一个二维数组 b, 初始化为 [ [4, 5, 6], [1, 2, 3]] (1) 输出二维数组 b 的形状（shape）（输出值为（2,3））(2) 输出 b(0,0)，b(0,1),b(1,1) 这三个元素（对应值分别为 4,5,2）
 print("第三题：\n")
 b = np.array([[4, 5, 6], [1, 2, 3]])  # 创建一个二维数组 b
@@ -209,7 +209,7 @@ plt.title("Plot of y = x^2")  # 图像标题
 plt.xlabel("x")  # x 轴标签
 plt.ylabel("y")  # y 轴标签
 
-# 显示半透明网格线
+# 显示出半透明网格线
 plt.grid(True, alpha=0.5)
 
 # 在右上角显示图例
@@ -239,8 +239,8 @@ plt.grid(True, alpha=0.5)
 # 显示图例
 plt.legend()
 
-# 自动调整子图布局，优化图形显示效果
-plt.tight_layout()
+# 自动调整布局，防止标签被截断
+plt.tight_layout() 
 
 # 显示图像
 plt.show()

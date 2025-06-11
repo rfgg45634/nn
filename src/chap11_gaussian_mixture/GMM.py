@@ -136,8 +136,8 @@ class GaussianMixtureModel:
            - E步：计算每个样本属于各高斯成分的后验概率（责任度）
            - M步：基于后验概率更新模型参数
         """
-        X = np.asarray(X)
-        n_samples, n_features = X.shape
+        X = np.asarray(X) # 将输入数据 X 转换为 NumPy 数组格式，确保后续操作的兼容性
+        n_samples, n_features = X.shape # 获取数据的样本数量和特征维度
         
         # 初始化混合系数（均匀分布）
         self.pi = np.ones(self.n_components) / self.n_components
@@ -173,8 +173,8 @@ class GaussianMixtureModel:
             self.pi = Nk / n_samples
             
             # 初始化新均值和新协方差矩阵
-            new_mu = np.zeros_like(self.mu)
-            new_sigma = np.zeros_like(self.sigma)
+            new_mu = np.zeros_like(self.mu)# 创建一个与 self.mu 形状相同且全为零的数组，作为新的均值向量
+            new_sigma = np.zeros_like(self.sigma)# 创建一个与 self.sigma 形状相同且全为零的数组，作为新的协方差矩阵
 
             # 对每个高斯成分更新参数
             for k in range(self.n_components):
@@ -311,13 +311,20 @@ if __name__ == "__main__":
     
     # 右图：GMM预测聚类
     plt.subplot(1, 2, 2)
+    # 绘制散点图展示GMM聚类预测结果：
+    # - X[:, 0]: 取数据集第一维特征作为x轴
+    # - X[:, 1]: 取数据集第二维特征作为y轴
+    # - c=y_pred: 使用预测标签作为颜色分类依据
+    # - cmap='viridis': 使用viridis颜色映射
+    # - s=15: 设置点的大小为15
+    # - alpha=0.8: 设置透明度为0.8（轻微透明效果）
     plt.scatter(X[:, 0], X[:, 1], c=y_pred, cmap='viridis', s=15, alpha=0.8)
-    plt.title("GMM预测聚类", fontsize=12)
-    plt.xlabel("特征1", fontsize=10)
-    plt.ylabel("特征2", fontsize=10)
-    plt.grid(True, linestyle='--', alpha=0.5)
+    plt.title("GMM预测聚类", fontsize=12) # 设置标题及字体大小
+    plt.xlabel("特征1", fontsize=10)      # 设置x轴标签及字体大小
+    plt.ylabel("特征2", fontsize=10)      # 设置y轴标签及字体大小
+    plt.grid(True, linestyle='--', alpha=0.5) # 添加网格线：
     
     plt.tight_layout()
-    plt.savefig('gmm_clustering_results.png', dpi=300)
+    plt.savefig('gmm_clustering_results.png', dpi=300)# 保存图形为 PNG 文件，分辨率为 300 DPI
     plt.show()
     print("程序执行完毕")

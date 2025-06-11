@@ -121,7 +121,7 @@ class linearModel(Model):
         return y
 
 
-    (xs, ys), (o_x, o_y) = load_data("train.txt")    # 调用load_data函数      
+    (xs, ys), (o_x, o_y) = load_data("train.txt")    # 加载训练数据，调用load_data函数      
     ndim = xs.shape[1]  # 获取特征维度
 
     model = linearModel(ndim=ndim)  # 实例化线性模型
@@ -153,7 +153,7 @@ def predict(model, xs):
 
 
 def evaluate(ys, ys_pred):
-    """评估模型。"""
+    """评估模型的性能"""
     std = np.std(ys - ys_pred) # 计算预测误差的标准差
     return std
 
@@ -179,7 +179,7 @@ y_test_preds = predict(model, xs_test)
 # 计算测试集预测值与真实值的标准差
 std = evaluate(ys_test, y_test_preds)
 # 打印测试集预测值与真实值的标准差
-print("训练集预测值与真实值的标准差：{:.1f}".format(std))
+print("测试集预测值与真实值的标准差：{:.1f}".format(std))
 
 # 绘制原始数据点：红色圆点标记，大小3
 # o_x: 原始数据X坐标

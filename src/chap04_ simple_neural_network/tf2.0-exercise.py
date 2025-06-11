@@ -49,7 +49,7 @@ def sigmoid(x):
     """
     exp_neg_x = tf.exp(-x)  # 计算 -x 的指数
     prob_x = 1.0 / (1.0 + exp_neg_x)  # 计算 sigmoid 函数值
-    return prob_x
+    return prob_x  # 返回最终的 sigmoid 概率值，将输入映射到 [0,1] 区间
 
 # 测试 sigmoid 实现是否正确
 # 生成随机测试数据，形状为 [10, 5] 的正态分布随机数
@@ -79,8 +79,9 @@ label = np.zeros_like(test_data)
 label[np.arange(10), np.random.randint(0, 5, size=10)] = 1.0  
 
 # 对比手动实现和 TensorFlow 实现的 softmax 交叉熵结果
-((tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(label, test_data))
-  - softmax_ce(prob, label))**2 < 0.0001).numpy()
+((tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(
+    labels=label, logits=test_data))  # 修正参数顺序为 (labels, logits)
+  - sigmoid_ce(prob, label))** 2 < 0.0001).numpy()
 
 # ## 实现 sigmoid 交叉熵loss函数
 
